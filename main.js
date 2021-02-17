@@ -1,7 +1,9 @@
-import { generator } from "./generator.js";
-import { bubbleSort } from "./bubble.js";
-import { sortTimeCheck } from "./timeChecker.js";
+import { generator } from "./tools/arrayGenerator.js";
+import { bubbleSort } from "./sorting/bubble.js";
+import { selectionSort } from "./sorting/selection.js";
+import { sortTimer } from "./tools/soringTimer.js";
 
-const numbers = generator(10);
+const numbers = generator(5000);
 
-sortTimeCheck(numbers, bubbleSort);
+sortTimer(numbers, bubbleSort);
+sortTimer(numbers, selectionSort);

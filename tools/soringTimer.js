@@ -1,4 +1,4 @@
-const sortTimeCheck = (arr, method) => {
+const sortTimer = (arr, method) => {
     const copy = [...arr];
     const startTime = Date.now();
     const sorted = method.sort(copy);
@@ -20,4 +20,4 @@ const sortTimeCheck = (arr, method) => {
     );
 };
 
-export { sortTimeCheck };
+export { sortTimer };
