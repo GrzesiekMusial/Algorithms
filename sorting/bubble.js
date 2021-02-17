@@ -1,4 +1,4 @@
-import { swap } from "./swap.js";
+import { swap } from "./methods/swap.js";
 
 const bubbleSort = {
     name: "Bubble Sort",

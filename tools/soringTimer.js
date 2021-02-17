@@ -5,18 +5,17 @@ const sortTimer = (arr, method) => {
     const time = Date.now() - startTime;
 
     console.log(
-        "\n",
-        "old: ",
-        arr,
-        "\n",
-        "sorted: ",
-        sorted,
-        "\n",
-        "method name: ",
-        method.name,
-        "\n",
-        "sort time in ms: ",
-        time
+        `
+        method name: ${method.name}
+        array length: ${arr.length}
+        sort time in ms: ${time}
+        old: ${arr.slice(0, 5)} ... ${arr.slice(arr.length - 5, arr.length)}
+        sorted: ${sorted.slice(0, 5)} ... ${sorted.slice(
+            sorted.length - 5,
+            sorted.length
+        )}
+    
+        `
     );
 };
 
