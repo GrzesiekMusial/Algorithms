@@ -9,7 +9,6 @@ const quickSort = {
 
         quickSort.sort(arr, boundary + 1, end);
         quickSort.sort(arr, start, boundary - 1);
-
         return arr;
     },
 };

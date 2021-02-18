@@ -1,11 +1,15 @@
-const sortTimer = (arr, method) => {
+const sortTimer = (arr, method, special = undefined) => {
     const copy = [...arr];
+    let sorted;
+
     let startTime = Date.now();
-    let sorted = method.sort(copy);
+    if (!special) sorted = method.sort(copy);
+    else sorted = method.sort(copy, special);
     const unsortedTime = Date.now() - startTime;
 
     startTime = Date.now();
-    sorted = method.sort(sorted);
+    if (!special) sorted = method.sort(sorted);
+    else sorted = method.sort(sorted, special);
     const sortedTime = Date.now() - startTime;
 
     console.log(
