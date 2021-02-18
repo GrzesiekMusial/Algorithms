@@ -8,11 +8,11 @@ const mergeSort = {
         if (left.length > 1) left = mergeSort.sort(left);
         if (right.length > 1) right = mergeSort.sort(right);
 
-        return allocate(left, right);
+        return merge(left, right);
     },
 };
 
-const allocate = (left, right) => {
+const merge = (left, right) => {
     const arr = Array.from({ length: left.length + right.length });
 
     let rIndex = 0,
