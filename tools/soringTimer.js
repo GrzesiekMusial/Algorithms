@@ -5,6 +5,7 @@ const sortTimer = (arr, method) => {
     const unsortedTime = Date.now() - startTime;
 
     startTime = Date.now();
+    console.log("sorted");
     sorted = method.sort(sorted);
     const sortedTime = Date.now() - startTime;
 

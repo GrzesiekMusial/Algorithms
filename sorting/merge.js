@@ -1,7 +1,7 @@
 const mergeSort = {
     name: "Merge Sort",
     sort: (arr) => {
-        const middle = parseInt(arr.length / 2);
+        const middle = Math.floor(arr.length / 2);
         let left = arr.slice(-Math.infinity, middle);
         let right = arr.slice(middle, Math.infinity);
 
