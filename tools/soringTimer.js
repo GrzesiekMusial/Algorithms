@@ -8,13 +8,22 @@ const sortTimer = (arr, method, special = undefined) => {
     const unsortedTime = Date.now() - startTime;
 
     startTime = Date.now();
-    if (!special) sorted = method.sort(sorted);
-    else sorted = method.sort(sorted, special);
+    // if (!special) sorted = method.sort(sorted);
+    // else sorted = method.sort(sorted, special);
     const sortedTime = Date.now() - startTime;
+
+    Message(special, method, arr, sorted, unsortedTime, sortedTime);
+};
+
+const Message = (special, method, arr, sorted, unsortedTime, sortedTime) => {
+    const methodInfo =
+        special && special.method && special.method.name
+            ? method.name + " ( special: " + special.method.name + " )"
+            : method.name;
 
     console.log(
         `
-        method name: ${method.name}
+        method: ${methodInfo}
         array length: ${arr.length}
         Unsorted array sort time in ms: ${unsortedTime}
         Sorted array sort time in ms: ${sortedTime}

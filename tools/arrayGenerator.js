@@ -1,10 +1,30 @@
 const generator = (number) => {
-    const array = Array.from({ length: number }, () =>
-        Math.floor(Math.random() * number)
-    );
-    console.log("generated array ", array);
+    // const array = Array.from({ length: number }, () =>
+    //     Math.floor(Math.random() * number)
+    // );
 
+    let array = Array.from(Array(number), (_, x) => x);
+    array = shuffle(array);
+
+    console.log("generated array ", array);
     return array;
 };
+
+function shuffle(array) {
+    let currentIndex = array.length,
+        temporaryValue,
+        randomIndex;
+
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
 
 export { generator };

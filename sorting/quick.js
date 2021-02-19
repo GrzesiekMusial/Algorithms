@@ -1,3 +1,4 @@
+import { setPriority } from "os";
 import { swap } from "./methods/swap.js";
 
 const quickSort = {
@@ -9,26 +10,30 @@ const quickSort = {
 
         quickSort.sort(arr, boundary + 1, end);
         quickSort.sort(arr, start, boundary - 1);
+
         return arr;
     },
 };
 
-function partition(items, left, right) {
-    let pivot = items[Math.floor((right + left) / 2)],
-        i = left,
-        j = right;
+function partition(array, left, right) {
+    let pivot = right;
+    let i = left;
+    let j = right;
 
-    while (i <= j) {
-        while (items[i] < pivot) i++;
-        while (items[j] > pivot) j--;
+    let boundary = i - 1;
 
-        if (i <= j) {
-            swap(items, i, j);
+    while (i < j) {
+        while (array[i] < array[pivot]) {
+            boundary++;
             i++;
-            j--;
         }
+
+        while (array[i] > array[pivot]) i++;
+
+        while (array[i] <= array[pivot]) swap(array, ++boundary, i++);
     }
-    return i;
+
+    return boundary;
 }
 
 export { quickSort };

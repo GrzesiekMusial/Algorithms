@@ -8,12 +8,12 @@ import { quickSort } from "./sorting/quick.js";
 import { countingSort } from "./sorting/counting.js";
 import { bucketSort } from "./sorting/bucket.js";
 
-const numbers = generator(1);
+const numbers = generator(4);
 
-sortTimer(numbers, bubbleSort);
-sortTimer(numbers, selectionSort);
-sortTimer(numbers, insertionSort);
-sortTimer(numbers, mergeSort);
+// sortTimer(numbers, bubbleSort);
+// sortTimer(numbers, selectionSort);
+// sortTimer(numbers, insertionSort);
+// sortTimer(numbers, mergeSort);
 sortTimer(numbers, quickSort);
-sortTimer(numbers, countingSort);
-sortTimer(numbers, bucketSort, { buckets: 10, method: quickSort });
+// sortTimer(numbers, countingSort);
+// sortTimer(numbers, bucketSort, { buckets: 10, method: bubbleSort });
