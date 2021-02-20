@@ -19,17 +19,11 @@ const merge = (left, right) => {
         lIndex = 0,
         aIndex = 0;
 
-    while (rIndex < right.length && lIndex < left.length) {
+    while (rIndex < right.length && lIndex < left.length)
         arr[aIndex++] =
             right[rIndex] > left[lIndex] ? left[lIndex++] : right[rIndex++];
-    }
-
-    while (lIndex < left.length) {
-        arr[aIndex++] = left[lIndex++];
-    }
-    while (rIndex < right.length) {
-        arr[aIndex++] = right[rIndex++];
-    }
+    while (lIndex < left.length) arr[aIndex++] = left[lIndex++];
+    while (rIndex < right.length) arr[aIndex++] = right[rIndex++];
 
     return arr;
 };

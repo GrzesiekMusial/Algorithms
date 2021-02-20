@@ -1,21 +1,29 @@
 const sortTimer = (arr, method, special = undefined) => {
-    const copy = [...arr];
-    let sorted;
+    const unsortedCheck = sort(arr, method, special);
+    const sortedCheck = sort(unsortedCheck.sortedArray, method, special);
 
-    let startTime = Date.now();
-    if (!special) sorted = method.sort(copy);
-    else sorted = method.sort(copy, special);
-    const unsortedTime = Date.now() - startTime;
-
-    startTime = Date.now();
-    // if (!special) sorted = method.sort(sorted);
-    // else sorted = method.sort(sorted, special);
-    const sortedTime = Date.now() - startTime;
-
-    Message(special, method, arr, sorted, unsortedTime, sortedTime);
+    getMessage(special, method, arr, unsortedCheck, sortedCheck);
 };
 
-const Message = (special, method, arr, sorted, unsortedTime, sortedTime) => {
+const sort = (arr, method, special) => {
+    const copy = [...arr];
+    let measuredTime;
+    let sorted;
+    const startTime = Date.now();
+
+    try {
+        if (!special) sorted = method.sort(copy);
+        else sorted = method.sort(copy, special);
+        measuredTime = Date.now() - startTime;
+    } catch (ex) {
+        sorted = [];
+        measuredTime = ex;
+    }
+
+    return { time: measuredTime, sortedArray: sorted };
+};
+
+const getMessage = (special, method, arr, unsortedCheck, sortedCheck) => {
     const methodInfo =
         special && special.method && special.method.name
             ? method.name + " ( special: " + special.method.name + " )"
@@ -25,12 +33,15 @@ const Message = (special, method, arr, sorted, unsortedTime, sortedTime) => {
         `
         method: ${methodInfo}
         array length: ${arr.length}
-        Unsorted array sort time in ms: ${unsortedTime}
-        Sorted array sort time in ms: ${sortedTime}
+        Unsorted array sort time in ms: ${unsortedCheck.time}
+        Sorted array sort time in ms: ${sortedCheck.time}
         old: ${arr.slice(0, 5)} ... ${arr.slice(arr.length - 5, arr.length)}
-        sorted: ${sorted.slice(0, 5)} ... ${sorted.slice(
-            sorted.length - 5,
-            sorted.length
+        sorted: ${unsortedCheck.sortedArray.slice(
+            0,
+            5
+        )} ... ${unsortedCheck.sortedArray.slice(
+            unsortedCheck.sortedArray.length - 5,
+            unsortedCheck.sortedArray.length
         )}
     
         `
