@@ -7,7 +7,7 @@ const exponentionalSearch = {
             let bound = 1;
             while (arr[bound] < search) bound *= 2;
             return binarySearch.search(
-                arr.slice(Math.floor(bound / 2), bound),
+                arr.slice(Math.floor(bound / 2), bound + 1),
                 search
             );
         } catch (ex) {
